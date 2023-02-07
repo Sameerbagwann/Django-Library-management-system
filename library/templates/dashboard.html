@@ -1,0 +1,58 @@
+{% extends 'base.html' %}
+
+{% block 'main' %}
+
+<main id="main">
+    <div class="container">
+        <div class="row">
+
+            <div class="col-md-2 my-5">
+                <a href="/cpost"><button class="btn btn-danger">Create Post</button></a>
+            </div><!--- End of Button-->
+            <div class="col-md-10 my-5">
+                <table class="table">
+                    <tr>
+                        <th>Sr.no</th>
+                        <th>Name</th>
+                        <th>Author Name</th>
+                        <th>Details</th>
+                        <th>Category</th>
+                        <th>Status</th>
+                        <th>Edit</th>
+                        <th>Delete</th>
+                    </tr>
+                    {% for x in data %}
+                    <tr>
+                        <td>{{x.id}}</td>
+                        <td>{{x.name}}</td>
+                        <td>{{x.author}}</td>
+                        <td>{{x.pdet}}</td>
+                        {% if x.cat == 1 %}
+                        <td>Technical</td>
+                        {% elif x.cat == 2 %}
+                        <td>Travel</td>
+                        {% else %}
+                        <td>Food</td>
+                        {% endif %}
+
+                        {% if x.status == 1 %}
+                        <td>Active</td>
+                        {% else %}
+                        <td>Inactive</td>
+                        {% endif %}
+                        <td><a href="/edit/{{x.id}}"><button class="btn btn-warning">Edit</button></a></td>
+                        <td><a href="/delete/{{x.id}}"><button class="btn btn-danger">Delete</button></a></td>
+                    </tr>
+                    {% endfor %}
+
+                </table>
+            </div><!--- End of table--->
+            
+            
+
+        </div><!--- End of row--->
+    </div><!--- End of container-->
+</main>
+
+
+{% endblock 'main' %}

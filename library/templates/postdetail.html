@@ -1,0 +1,31 @@
+{%extends 'base.html'%}
+
+{% load static %}
+{% block 'main' %}
+<main id="main">
+
+
+  <div class="container">
+    <div class="row" method="GET">
+      <div class="col-md-9 mt-3 mb-3">
+        <div class="card" style="width: 100%">
+          <img src="{{x.image}}" class="card-img-top" alt="...">
+          <div class="card-body" action="/">
+            {% for x in data %}
+            <h5 class="card-title">{{x.name}}</h5>
+            <p class="card-text">{{x.author}} </p>
+            <p>created on:{{x.created_on}}</p>
+            <p><b>Details</b></p>
+            <p>{{x.pdet}}</p>
+            <a href="/" class="btn btn-danger">Back</a>
+            {% endfor %}
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</main><!-- End #main -->
+
+
+{% endblock 'main' %}

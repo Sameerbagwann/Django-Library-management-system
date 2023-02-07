@@ -1,0 +1,76 @@
+{% extends 'base.html' %}
+
+{% block 'main' %}
+
+<main id="main">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-6 my-3 mx-auto">
+
+                <form method="POST" action="/"> 
+                    {% csrf_token %}
+                    <div class="row mt-4">
+                        <div class="form-group col-md-12">
+                            <h3>Post</h3>
+                            <label class="form-label">Book Name</label>
+                            <input type="text" class="form-control mt-2" name="name" placeholder="Enter name of the Book" required>
+                        </div>
+                    </div>
+                 
+                    <div class="row mt-4">
+                        <div class="form-group col-md-12">
+                            <label class="form-label">Author Name</label>
+                            <input type="text" class="form-control mt-2" name="author" placeholder="Enter name of the Author" required>
+                        </div>
+                    </div>
+                 
+                    <div class="row mt-4">
+                        <div class="form-group col-md-12">
+                            <label class="form-label">Detail post</label>
+                            <input type="text" class="form-control mt-2" name="pdet" placeholder="Enter Details of book" required>
+                        </div>
+                    </div>
+                 
+                    <div class="row mt-4">
+                        <div class="form-group col-md-12">
+                            <select class="form-select" name="cat" aria-label="Default select example">
+                                
+                                <option value="1">Technical</option>
+                                <option value="1">Vehicals</option>
+                                <option value="2">Travel</option>
+                                <option value="3">Food</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="custom-file">
+                        <label class="custom-file-label" for="validatedCustomFile">Choose file...</label><br>
+                        <input type="file" class="custom-file-input" name="image" id="validatedCustomFile">
+                        <div class="invalid-feedback">Example invalid custom file feedback</div>
+                      </div>
+                    <div class="row mt-3">
+                        <label>STATUS:</label>
+                        <div class="form-check">
+                            <input class="form-check-input" type="radio" value="1" name="status" id="activeid">
+                            <label class="form-check-label" for="activeid">
+                                Active
+                            </label>
+                        </div>
+                        <div class="form-check">
+                            <input class="form-check-input" type="radio" value="0" name="status" id="inactiveid">
+                            <label class="form-check-label" for="inactiveid">
+                                Inactive
+                            </label>
+                        </div><!---Status -->
+                    <button type="submit" class="btn btn-info mt-4" style="color: #fff;" >Add Book</button>
+                </div>
+                </form>
+                </form>
+
+            </div>
+        </div>
+    </div>
+
+
+</main>
+
+{% endblock 'main' %}

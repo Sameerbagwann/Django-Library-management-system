@@ -1,0 +1,61 @@
+{% extends 'base.html' %}
+
+{% block 'main' %}
+
+<main id="main">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-6 my-5 mx-auto">
+                 {% for x in data %}
+                <form method="POST" action="/edit/{{x.id}}">
+                    {% csrf_token %}
+                    
+                    <div class="mb-3">
+                        <label for="tid" class="form-label">Name:</label>
+                        <input type="text" name="name" class="form-control" value="{{x.name}}" id="tid"
+                            placeholder="Enter Post Name">
+                    </div><!--- ENd of title-->
+
+                    <div class="mb-3">
+                        <label for="sid" class="form-label">Author Name:</label>
+                        <input type="text" name="author" class="form-control" value="{{x.author}}" id="sid"
+                            placeholder="author name">
+                    </div><!--- End of SD -->
+
+                    <div class="mb-3">
+                        <label for="pdetid" class="form-label">Enter Post Details:</label>
+                        <textarea name="pdet" class="form-control" id="pdetid" rows="3">{{x.pdet}}</textarea>
+                    </div><!--- PDETID-->
+
+                    <div class="mb-3">
+                        <select class="form-select" name="cat" aria-label="Default select example">
+                            {% if x.cat == 1 %}
+                            <option value="1">Technical</option>
+                            {% elif x.cat == 2 %}
+                            <option value="2">Travel</option>
+                            {% else %}
+                            <option value="3">Food</option>
+                            {% endif %}
+
+
+                            <option>Select Category</option>
+                            <option value="1">Technical</option>
+                            <option value="2">Travel</option>
+                            <option value="3">Food</option>
+                        </select>
+                    </div><!--- Category -->
+                        <div class="mb-3">
+                            <button class="btn btn-danger" type="submit">UPDATE POST</button>
+                        </div>
+                    </div> <!--- Radio button end-->
+                    {% endfor %}
+                </form>
+
+            </div>
+        </div>
+    </div>
+
+
+</main>
+
+{% endblock 'main' %}

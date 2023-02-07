@@ -1,0 +1,30 @@
+{%extends 'base.html'%}
+
+{% load static %}
+
+{% block 'main' %}
+
+<main id="main">
+
+    <div class="container">
+        <div class="row" action="/" >
+            <div class="col-md-3 my-5">
+                <div class="col-md-9 mt-3 mb-3">
+                    {% for x in data %}
+                    <div class="card" style="width: 100%">
+                        <img src="{{x.image}}" class="card-img-top" alt="...">
+                        <div class="card-body">
+                            <h5 class="card-name">{{x.name}}</h5>
+                            <p class="card-text">{{x.author}} </p>
+                            <p>created on:{{x.created_on}}</p>
+                            <a href="/postdetail/{{x.id}}" class="btn btn-info" style="color: #fff;" >View more</a>
+                        </div>
+                    </div>
+                    {% endfor %}
+                </div>
+            </div>
+        </div>
+
+</main><!-- End #main -->
+
+{% endblock 'main' %}

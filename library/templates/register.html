@@ -1,0 +1,72 @@
+{% extends 'base.html' %}
+
+{% block 'main' %}
+
+<main id="main">
+
+    <div class="container">
+        <div class="row">
+
+            <div class="col-md-6 my-5 mx-auto">
+
+                <form method="POST" action="/register">
+                    {% csrf_token %}
+                    <div class="mb-3">
+                        <label for="nid" class="form-label">Name:</label>
+                        <input type="text" name="uname" class="form-control" id="nid" placeholder="Enter Name">
+                        {% if errnamemsg %}
+                        <span style="color:red" class="Text-danger">Name field cannot be Blank</span>
+                        {% endif %}
+                    </div>
+
+                    <div class="mb-3">
+                        <label for="sid" class="form-label">Username:</label>
+                        <input type="email" name="uemail" class="form-control" id="sid" placeholder="Enter Email Id">
+                        {% if erremailmsg %}
+                        <span class="text-danger">Username field cannot be Blank</span>
+                        {% endif %}
+                    </div>
+
+                    <div class="mb-3">
+                        <label for="pdetid" class="form-label">Password:</label>
+                        <input type="password" name="upass" class="form-control" id="sid" placeholder="Enter Password">
+                        {% if errupassmsg %}
+                        <span class="text-danger">Password field cannot be Blank</span>
+                        {% endif %}
+                    </div>
+                    <div class="mb-3">
+                        <label for="pdetid" class="form-label">Confirm Password:</label>
+                        <input type="password" name="cupass" class="form-control" id="sid" placeholder="Enter Password Again">
+                        {% if errcupassmsg %}
+                        <span class="text-danger">Confirm password field cannot be Blank</span>
+                        {% elif errmismatch %}
+                        <span class="text-danger">Password and Confirm Password didn't Matched</span>
+                        {% endif %}
+                    </div>
+
+
+                    <div class="mb-3">
+
+                        <button class="btn btn-outline-danger" type="submit">Register</button>
+                    </div>
+                    {% if msg %}
+                    <span class="text-success">{{msg}}</span>
+                    {% endif %}
+
+
+
+                </form>
+
+
+            </div>
+
+        </div>
+
+    </div>
+
+
+
+</main>
+
+
+{% endblock 'main' %}
